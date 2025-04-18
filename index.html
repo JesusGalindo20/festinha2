@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festa da Isa & Luis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f5ff;
+            color: #4a4a4a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #6c5ce7;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #4b9cd3;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #6c5ce7;
+            font-weight: bold;
+        }
+
+        .button {
+            background-color: #4b9cd3;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background-color: #6c5ce7;
+        }
+
+        .decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Isa & Luis 🎈</h1>
+            <h2>Isa faz 10 anos e Luis faz 4!</h2>
+        </div>
+
+        <div class="details">
+            <p>📅 <span class="highlight">Domingo, 15 de Outubro</span></p>
+            <p>⏰ <span class="highlight">15:00 horas</span></p>
+            <p>📍 <span class="highlight">Rua das Flores, 123 - Jardim Primavera</span></p>
+            <p>✨ Venha celebrar conosco este dia especial!</p>
+            <p>🎁 Lista de presentes disponível no local</p>
+            <br>
+            <button class="button" onclick="confirmarPresenca()">Confirmar Presença</button>
+            <p id="confirmacao" style="display: none; margin-top: 15px;">✅ Presença confirmada! Te esperamos!</p>
+        </div>
+
+        <div class="decorations" id="decorations"></div>
+    </div>
+
+    <script>
+        function criarBalao() {
+            const decorations = document.getElementById('decorations');
+            const balao = document.createElement('div');
+            balao.className = 'balloon';
+            balao.innerHTML = Math.random() > 0.5 ? '🎈' : '🎉';
+
+            const colors = ['#6c5ce7', '#4b9cd3', '#ff7675'];
+            balao.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+            const startPosition = Math.random() * 100;
+            balao.style.left = `${startPosition}%`;
+            balao.style.animation = `flutuar ${8 + Math.random() * 8}s infinite`;
+
+            decorations.appendChild(balao);
+        }
+
+        function confirmarPresenca() {
+            document.getElementById('confirmacao').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('confirmacao').style.display = 'none';
+            }, 3000);
+        }
+
+        // Cria balões periodicamente
+        setInterval(criarBalao, 3000);
+
+        // Animação CSS dinâmica
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes flutuar {
+                0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+                50% { opacity: 0.7; }
+                100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
