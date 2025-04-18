@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Festa Mágica na Chácara | Isa & Luis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Poppins:wght@400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@400;600;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -37,12 +37,13 @@
         .header {
             margin-bottom: 60px;
             position: relative;
-            padding: 40px 0;
+            padding: 60px 0;
             background: linear-gradient(45deg, var(--roxo), var(--azul));
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             color: white;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
 
         .header::before {
@@ -57,15 +58,16 @@
         }
 
         h1 {
-            font-family: 'Comic Neue', cursive;
-            font-size: 3.5em;
+            font-family: 'Chewy', cursive;
+            font-size: 4em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 15px;
             position: relative;
+            letter-spacing: 2px;
         }
 
         h2 {
-            font-size: 2em;
+            font-size: 2.2em;
             font-weight: 600;
             margin-bottom: 30px;
             position: relative;
@@ -77,40 +79,13 @@
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             margin-bottom: 40px;
-            position: relative;
             backdrop-filter: blur(10px);
-        }
-
-        .amenities {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .amenity-item {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .amenity-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--azul);
-        }
-
-        .amenity-item span {
-            display: block;
-            font-size: 2.5em;
-            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin: 50px 0;
         }
@@ -121,49 +96,41 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.4));
+            transform: scale(1.03) rotate(1deg);
         }
 
         .gallery img {
             width: 100%;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
         }
 
         .button {
             background: linear-gradient(45deg, var(--roxo), var(--azul));
             color: white;
-            padding: 18px 45px;
+            padding: 20px 50px;
             border: none;
-            border-radius: 30px;
-            font-size: 1.2em;
+            border-radius: 35px;
+            font-size: 1.3em;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            gap: 15px;
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
+            font-family: 'Chewy', cursive;
         }
 
         .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
-            background: linear-gradient(45deg, var(--azul), var(--roxo));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
         }
 
         .floating-element {
@@ -171,6 +138,7 @@
             pointer-events: none;
             z-index: -1;
             animation: float 8s infinite linear;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
         }
 
         @keyframes float {
@@ -185,7 +153,7 @@
             }
 
             50% {
-                transform: translateY(0) rotate(-5deg);
+                transform: translateY(0px) rotate(-5deg);
             }
 
             75% {
@@ -199,15 +167,22 @@
             right: 30px;
             background: #25D366;
             color: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 50%;
-            font-size: 1.5em;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            font-size: 1.8em;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1) rotate(15deg);
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
 
         .pulse {
@@ -220,12 +195,41 @@
             }
 
             50% {
-                transform: scale(1.05);
+                transform: scale(1.08);
             }
 
             100% {
                 transform: scale(1);
             }
+        }
+
+        .amenities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .amenity-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 2px solid transparent;
+        }
+
+        .amenity-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--azul);
+        }
+
+        .amenity-item span {
+            display: block;
+            font-size: 3em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
         }
     </style>
 </head>
@@ -233,7 +237,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎂 Festa Mágica 🦄</h1>
+            <h1>🎂 Festa Mágica 🎈</h1>
             <h2>Isa 10 anos & Luis 4 anos</h2>
             <div class="pulse">
                 <a href="LINK_DO_FORMULARIO" class="button" target="_blank">
@@ -272,13 +276,16 @@
 
         <div class="gallery">
             <div class="gallery-item">
-                <img src="https://source.unsplash.com/random/800x600/?pool-party" alt="Área da Piscina">
+                <img src="https://images.pexels.com/photos/61129/pexels-photo-61129.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt="Piscina infantil" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="https://source.unsplash.com/random/800x600/?bouncy-castle" alt="Pula-Pula">
+                <img src="https://images.pexels.com/photos/4964542/pexels-photo-4964542.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt="Pula-pula colorido" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="https://source.unsplash.com/random/800x600/?soccer-field" alt="Quadra Esportiva">
+                <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=600"
+                    alt="Quadra esportiva" loading="lazy">
             </div>
         </div>
 
@@ -288,8 +295,8 @@
     </div>
 
     <script>
-        // Cria elementos flutuantes decorativos
-        const emojis = ['🎈', '🎉', '✨', '🎁', '🦄', '🌈'];
+        // Animação de elementos flutuantes
+        const emojis = ['🎈', '🎉', '✨', '🎁', '🦄', '🌈', '🎂', '⚽', '🏊‍♂️'];
         const colors = ['#8aa7ff', '#b28dff', '#ff9ebc'];
 
         function createFloatingElement() {
@@ -298,10 +305,11 @@
             element.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
             element.style.left = Math.random() * 100 + 'vw';
-            element.style.fontSize = (20 + Math.random() * 30) + 'px';
-            element.style.animationDuration = (8 + Math.random() * 8) + 's';
+            element.style.fontSize = (25 + Math.random() * 40) + 'px';
+            element.style.animationDuration = (6 + Math.random() * 6) + 's';
             element.style.color = colors[Math.floor(Math.random() * colors.length)];
-            element.style.opacity = 0.7;
+            element.style.opacity = 0.8;
+            element.style.zIndex = -1;
 
             document.body.appendChild(element);
 
@@ -310,19 +318,36 @@
             }, 10000);
         }
 
-        setInterval(createFloatingElement, 1500);
+        setInterval(createFloatingElement, 800);
 
-        // Efeito de hover nas imagens
+        // Efeito parallax suave
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            document.querySelector('.header').style.transform = `
+                translateX(${x * 10}px)
+                translateY(${y * 10}px)
+            `;
+        });
+
+        // Hover 3D nas imagens
         document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('mousemove', function (e) {
-                const rect = this.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width * 100;
-                const y = (e.clientY - rect.top) / rect.height * 100;
-                this.style.transform = `perspective(1000px) rotateX(${(y - 50) / 2}deg) rotateY(${(50 - x) / 2}deg) scale(1.05)`;
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                item.style.transform = `
+                    perspective(1000px)
+                    rotateX(${(y - rect.height / 2) / 10}deg)
+                    rotateY(${-(x - rect.width / 2) / 10}deg)
+                    scale(1.05)
+                `;
             });
 
-            item.addEventListener('mouseleave', function () {
-                this.style.transform = 'none';
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'none';
             });
         });
     </script>
