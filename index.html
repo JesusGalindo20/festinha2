@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Festa da Isa & Luis</title>
+    <title>Festa na Chácara - Isa & Luis</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
             text-align: center;
@@ -69,6 +69,9 @@
             font-size: 1.1em;
             cursor: pointer;
             transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
         }
 
         .button:hover {
@@ -91,25 +94,80 @@
             font-size: 2em;
             opacity: 0.7;
         }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .amenities {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .amenity-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎉 Isa & Luis 🎈</h1>
+            <h1>🎉 Festa na Chácara! 🎈</h1>
             <h2>Isa faz 10 anos e Luis faz 4!</h2>
         </div>
 
         <div class="details">
             <p>📅 <span class="highlight">Domingo, 15 de Outubro</span></p>
             <p>⏰ <span class="highlight">15:00 horas</span></p>
-            <p>📍 <span class="highlight">Rua das Flores, 123 - Jardim Primavera</span></p>
-            <p>✨ Venha celebrar conosco este dia especial!</p>
+            <p>📍 <span class="highlight">Chácara Sol Nascente<br>
+                    Estrada das Águas, KM 12<br>
+                    Itapecerica da Serra - SP</span></p>
+
+            <div class="amenities">
+                <div class="amenity-item">
+                    🏊 Piscina Adulto/Infantil
+                </div>
+                <div class="amenity-item">
+                    🤸 Pula-Pula Profissional
+                </div>
+                <div class="amenity-item">
+                    ⚽ Quadra de Futebol
+                </div>
+            </div>
+
+            <p>✨ Traje: Roupas confortáveis para brincar!</p>
             <p>🎁 Lista de presentes disponível no local</p>
-            <br>
-            <button class="button" onclick="confirmarPresenca()">Confirmar Presença</button>
-            <p id="confirmacao" style="display: none; margin-top: 15px;">✅ Presença confirmada! Te esperamos!</p>
+
+            <a href="LINK_DO_SEU_FORMULARIO_AQUI" class="button" target="_blank">Confirmar Presença</a>
+
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                *Levar roupa de banho e toalha
+            </p>
+        </div>
+
+        <div class="gallery">
+            <img src="https://source.unsplash.com/random/800x600/?pool" alt="Piscina">
+            <img src="https://source.unsplash.com/random/800x600/?bouncy-castle" alt="Pula-Pula">
+            <img src="https://source.unsplash.com/random/800x600/?soccer-field" alt="Quadra de Futebol">
         </div>
 
         <div class="decorations" id="decorations"></div>
@@ -132,15 +190,8 @@
             decorations.appendChild(balao);
         }
 
-        function confirmarPresenca() {
-            document.getElementById('confirmacao').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('confirmacao').style.display = 'none';
-            }, 3000);
-        }
-
         // Cria balões periodicamente
-        setInterval(criarBalao, 3000);
+        setInterval(criarBalao, 1500);
 
         // Animação CSS dinâmica
         const style = document.createElement('style');
